@@ -9,6 +9,10 @@
     <color name="color_black">#000000</color>
     <color name="color_light_separator">#D7D8D9</color>
     <color name="color_light_text_secondary">#818C99</color>
+    <color name="color_light_text_subtitle">#6D7885</color>
+    <color name="color_light_text_accent">#3F8AE0</color>
+    <color name="color_light_text_subhead">#6D7885</color>
+    <color name="color_light_content_tint">#F5F5F5</color>
     <color name="color_button_primary_normal">#4986CC</color>
-    <color name="color_button_primary_press">#994986CC</color>
+    <color name="color_button_primary_press">#664986CC</color>
 </resources>
