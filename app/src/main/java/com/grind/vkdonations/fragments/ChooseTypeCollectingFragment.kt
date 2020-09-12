@@ -30,11 +30,11 @@ class ChooseTypeCollectingFragment : Fragment() {
             fragmentManager?.popBackStack()
         }
         targetCollecting.setOnClickListener {
-
+            replaceFragment(CreateTargetCollectingFragment(), true)
         }
 
         regularCollecting.setOnClickListener {
-
+            replaceFragment(CreateRegularCollectingFragment(), true)
         }
 
         return v

@@ -69,9 +69,12 @@
         android:paddingHorizontal="12dp">
 
         <EditText
+            android:id="@+id/et_message"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
+            android:layout_marginBottom="12dp"
+            android:hint="Можете оставить тут сообщение"
             android:textSize="15sp"
             android:layout_marginTop="16dp"/>
 
