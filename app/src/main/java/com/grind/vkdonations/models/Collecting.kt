@@ -5,8 +5,6 @@ import java.io.Serializable
 
 class Collecting {
 
-
-
     var type = 0
     var deadlineType = 0
     var imageUri: String? = null

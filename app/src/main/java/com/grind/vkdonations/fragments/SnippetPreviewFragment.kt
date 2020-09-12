@@ -9,6 +9,7 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import com.grind.vkdonations.R
 import com.grind.vkdonations.models.Collecting
 import com.grind.vkdonations.models.CollectingTypes
@@ -67,8 +68,11 @@ class SnippetPreviewFragment(val collecting: Collecting): Fragment() {
 
         uploadButton.setOnClickListener {
             collecting.currentAmount = Random.nextInt((collecting.needAmount * 0.3).toInt(), (collecting.needAmount * 0.7).toInt())
-            fragmentManager?.popBackStackImmediate(MainFragment::class.java.simpleName, 0)
             replaceFragment(FeedFragment(Post(collecting, message.text.toString())), true)
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
     }
 }

@@ -8,6 +8,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.*
 import android.view.ViewGroup
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.AnimationSet
@@ -20,7 +21,7 @@ import com.grind.vkdonations.models.CollectingTypes
 import java.text.SimpleDateFormat
 import java.util.*
 
-class CollectingInfo(val collecting: Collecting, val deadlineText: String): Fragment() {
+class CollectingInfo(private val collecting: Collecting, private val deadlineText: String) : Fragment() {
     private lateinit var backButton: ImageView
     private lateinit var headerImage: ImageView
     private lateinit var title: TextView
@@ -57,18 +58,21 @@ class CollectingInfo(val collecting: Collecting, val deadlineText: String): Frag
 
         setInfo()
         animateProgress()
+
+        backButton.setOnClickListener { fragmentManager?.popBackStack() }
         return v
     }
 
-    private fun setInfo(){
+
+    private fun setInfo() {
         headerImage.setImageURI(Uri.parse(collecting.imageUri))
         title.text = collecting.title
         author.text = collecting.author
         deadlineInfo.text = deadlineText
-        if(collecting.type == CollectingTypes.REGULAR_TYPE){
+        if (collecting.type == CollectingTypes.REGULAR_TYPE) {
             deadlineInfo2.text = "Нужно собрать в этом месяце"
         } else {
-            if(collecting.deadlineType == CollectingTypes.DATE_DEADLINE_TYPE){
+            if (collecting.deadlineType == CollectingTypes.DATE_DEADLINE_TYPE) {
                 val format = SimpleDateFormat("d MMMM")
                 deadlineInfo2.text = "Нужно собрать до ${format.format(Date(collecting.deadline))}"
             } else {
@@ -80,11 +84,12 @@ class CollectingInfo(val collecting: Collecting, val deadlineText: String): Frag
         needAmount.text = "${collecting.needAmount} ₽"
         currentAmount.text = "${collecting.currentAmount} ₽"
         description.text = collecting.description
-        amountProgressText.text = "Собрано ${collecting.currentAmount} ₽ из ${collecting.needAmount} ₽"
+        amountProgressText.text =
+            "Собрано ${collecting.currentAmount} ₽ из ${collecting.needAmount} ₽"
 
     }
 
-    private fun animateProgress(){
+    private fun animateProgress() {
         val finalScaleX = collecting.currentAmount.toFloat() / collecting.needAmount
 
         currentAmount.alpha = 0f
@@ -110,8 +115,6 @@ class CollectingInfo(val collecting: Collecting, val deadlineText: String): Frag
                     nA.start()
                 }
             }).start()
-
-
 
 
     }

@@ -81,4 +81,9 @@ class FeedFragment(private val post: Post) : Fragment() {
         progressLine.scaleX = post.collecting.currentAmount.toFloat() / post.collecting.needAmount
     }
 
+    override fun onDestroy() {
+        fragmentManager?.popBackStack(MainFragment::class.java.simpleName, 0)
+        super.onDestroy()
+    }
+
 }

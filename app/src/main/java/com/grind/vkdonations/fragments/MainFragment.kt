@@ -36,4 +36,9 @@ class MainFragment: Fragment() {
         }
         return v
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        activity?.finish()
+    }
 }
